@@ -1,22 +1,31 @@
 import speech_recognition as sr
 
-recognizer = sr.Recognizer()
 
 def listen():
+    recognizer = sr.Recognizer()
+    recognizer.energy_threshold = 300  # Adjust threshold for your environment
+    mic = sr.Microphone()
     """Fungsi untuk mendengarkan dan mengenali suara."""
-    try:
-        with sr.Microphone() as source:
-            print("Listening...")
-            audio = recognizer.listen(source)
-            command = recognizer.recognize_google(audio)  # Google Speech API digunakan untuk pengenalan suara
-            print(f"You said: {command}")
+    with mic as source:
+        print("Adjusting for ambient noise...")
+        recognizer.adjust_for_ambient_noise(source)
+        print("Listening...")
+
+        try:
+            audio = recognizer.listen(source, timeout=5, phrase_time_limit=5)
+            command = recognizer.recognize_google(audio)
+            print(f"Recognized: {command}")
             return command
-    except sr.UnknownValueError:
-        print("Sorry, I did not understand that.")
-        return "Sorry, I did not understand that."
-    except sr.RequestError as e:
-        print(f"Could not request results; {e}")
-        return "Could not request results"
-    except OSError:
-        print("No microphone found or device not available.")
-        return "No microphone found or device not available."
+        except sr.WaitTimeoutError:
+            print("Listening timed out. No voice detected.")
+            return "No voice detected."
+        except sr.UnknownValueError:
+            print("Sorry, I could not understand the audio.")
+            return "Sorry, I did not understand that."
+        except sr.RequestError:
+            print("Could not request results; check your network connection.")
+            return "Could not request results, check your network connection."
+        except OSError:
+            print("No microphone found or device not available.")
+            return "No microphone found or device not available."
+        return None
