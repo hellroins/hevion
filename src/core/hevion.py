@@ -16,9 +16,8 @@ class HevionAssistant:
             print("No internet connection. Using pyttsx3 for offline speech...")
             self.speak_function = speak_offline
 
-        self.listening = False
-        self.ctrl_pressed = False  # Track Ctrl key state
-        self.listener = None  # Initialize the listener as None
+        self.listening = False  # Flag to indicate listening state
+        self.listener_thread = None  # To hold the reference to the listening thread
 
         # Ensure microphone is available
         if not self.check_microphone():
@@ -43,28 +42,20 @@ class HevionAssistant:
             print(f"Error: {e}")
             return False
 
-    def on_press(self, key):
-        """Detect key presses."""
-        try:
-            if key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
-                self.ctrl_pressed = True  # Ctrl is pressed
-            elif hasattr(key, 'char') and key.char == '1' and self.ctrl_pressed:
-                # If Ctrl + 1 is pressed
-                if not self.listening:
-                    print("Push-to-Talk Activated: Listening...")
-                    self.listening = True
-                    command = listen()  # Listen for voice command
-                    if command:
-                        print(f"You said: {command}")
-                        self.handle_command(command)
-        except AttributeError:
-            pass
+    def start_listening(self):
+        """Start listening for voice commands."""
+        if not self.listening:  # Ensure only one listening process is started
+            self.listening = True
+            print("Push-to-Talk Activated: Listening...")
+            command = listen()  # Call the function to listen for voice input
+            if command:
+                print(f"You said: {command}")
+                self.handle_command(command)
+            self.listening = False
 
-    def on_release(self, key):
-        """Detect key releases."""
-        if key == keyboard.Key.ctrl_l or key == keyboard.Key.ctrl_r:
-            self.ctrl_pressed = False  # Ctrl key released
-        if hasattr(key, 'char') and key.char == '1' and self.listening:
+    def stop_listening(self):
+        """Stop listening for voice commands."""
+        if self.listening:
             print("Push-to-Talk Deactivated: Stopped Listening.")
             self.listening = False
 
@@ -84,13 +75,28 @@ class HevionAssistant:
             response = "Sorry, I can't help with that."
             self.speak_function(response)
 
+    def on_press(self, event):
+        """Detect when Ctrl+1 is pressed."""
+        if event.name == '1' and keyboard.is_pressed('ctrl'):
+            # Start listening when Ctrl + 1 is pressed
+            if not self.listening:  # Prevent starting multiple listeners
+                self.listener_thread = threading.Thread(target=self.start_listening)
+                self.listener_thread.start()
+
+    def on_release(self, event):
+        """Detect when Ctrl+1 is released."""
+        if event.name == '1' and not keyboard.is_pressed('ctrl'):
+            # Stop listening when Ctrl + 1 is released
+            self.stop_listening()
+
     def start_keyboard_listener(self):
-        """Start the keyboard listener in a background thread."""
-        self.listener = keyboard.Listener(
-            on_press=self.on_press,
-            on_release=self.on_release
-        )
-        self.listener.start()
+        """Start the keyboard listener."""
+        # Hook for detecting key press and release events
+        keyboard.on_press(self.on_press)
+        keyboard.on_release(self.on_release)
+
+        # Keep the program running to listen for hotkeys
+        keyboard.wait('esc')  # You can change this to any key to exit the program
 
     def run(self):
         """Run the Hevion Assistant."""
