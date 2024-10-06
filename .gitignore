@@ -1,0 +1,6 @@
+gpt2_model
+gpt2_tokenizer
+response.mp3
+build
+dist
+__pycache__

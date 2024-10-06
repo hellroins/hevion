@@ -1,0 +1,119 @@
+2024-10-06 20:36:57,045 - INFO - Program mulai berjalan...
+2024-10-06 20:36:57,048 - DEBUG - Starting new HTTP connection (1): www.google.com:80
+2024-10-06 20:36:57,275 - DEBUG - http://www.google.com:80 "GET / HTTP/11" 200 9484
+2024-10-06 20:36:57,307 - DEBUG - Importing BlpImagePlugin
+2024-10-06 20:36:57,310 - DEBUG - Importing BmpImagePlugin
+2024-10-06 20:36:57,311 - DEBUG - Importing BufrStubImagePlugin
+2024-10-06 20:36:57,313 - DEBUG - Importing CurImagePlugin
+2024-10-06 20:36:57,314 - DEBUG - Importing DcxImagePlugin
+2024-10-06 20:36:57,317 - DEBUG - Importing DdsImagePlugin
+2024-10-06 20:36:57,324 - DEBUG - Importing EpsImagePlugin
+2024-10-06 20:36:57,328 - DEBUG - Importing FitsImagePlugin
+2024-10-06 20:36:57,332 - DEBUG - Importing FliImagePlugin
+2024-10-06 20:36:57,335 - DEBUG - Importing FpxImagePlugin
+2024-10-06 20:36:57,339 - DEBUG - Image: failed to import FpxImagePlugin: No module named 'olefile'
+2024-10-06 20:36:57,340 - DEBUG - Importing FtexImagePlugin
+2024-10-06 20:36:57,342 - DEBUG - Importing GbrImagePlugin
+2024-10-06 20:36:57,345 - DEBUG - Importing GifImagePlugin
+2024-10-06 20:36:57,346 - DEBUG - Importing GribStubImagePlugin
+2024-10-06 20:36:57,348 - DEBUG - Importing Hdf5StubImagePlugin
+2024-10-06 20:36:57,349 - DEBUG - Importing IcnsImagePlugin
+2024-10-06 20:36:57,355 - DEBUG - Importing IcoImagePlugin
+2024-10-06 20:36:57,357 - DEBUG - Importing ImImagePlugin
+2024-10-06 20:36:57,359 - DEBUG - Importing ImtImagePlugin
+2024-10-06 20:36:57,361 - DEBUG - Importing IptcImagePlugin
+2024-10-06 20:36:57,363 - DEBUG - Importing JpegImagePlugin
+2024-10-06 20:36:57,363 - DEBUG - Importing Jpeg2KImagePlugin
+2024-10-06 20:36:57,364 - DEBUG - Importing McIdasImagePlugin
+2024-10-06 20:36:57,365 - DEBUG - Importing MicImagePlugin
+2024-10-06 20:36:57,368 - DEBUG - Image: failed to import MicImagePlugin: No module named 'olefile'
+2024-10-06 20:36:57,369 - DEBUG - Importing MpegImagePlugin
+2024-10-06 20:36:57,372 - DEBUG - Importing MpoImagePlugin
+2024-10-06 20:36:57,382 - DEBUG - Importing MspImagePlugin
+2024-10-06 20:36:57,384 - DEBUG - Importing PalmImagePlugin
+2024-10-06 20:36:57,386 - DEBUG - Importing PcdImagePlugin
+2024-10-06 20:36:57,388 - DEBUG - Importing PcxImagePlugin
+2024-10-06 20:36:57,388 - DEBUG - Importing PdfImagePlugin
+2024-10-06 20:36:57,396 - DEBUG - Importing PixarImagePlugin
+2024-10-06 20:36:57,398 - DEBUG - Importing PngImagePlugin
+2024-10-06 20:36:57,398 - DEBUG - Importing PpmImagePlugin
+2024-10-06 20:36:57,399 - DEBUG - Importing PsdImagePlugin
+2024-10-06 20:36:57,400 - DEBUG - Importing QoiImagePlugin
+2024-10-06 20:36:57,402 - DEBUG - Importing SgiImagePlugin
+2024-10-06 20:36:57,405 - DEBUG - Importing SpiderImagePlugin
+2024-10-06 20:36:57,406 - DEBUG - Importing SunImagePlugin
+2024-10-06 20:36:57,407 - DEBUG - Importing TgaImagePlugin
+2024-10-06 20:36:57,409 - DEBUG - Importing TiffImagePlugin
+2024-10-06 20:36:57,409 - DEBUG - Importing WebPImagePlugin
+2024-10-06 20:36:57,411 - DEBUG - Importing WmfImagePlugin
+2024-10-06 20:36:57,413 - DEBUG - Importing XbmImagePlugin
+2024-10-06 20:36:57,415 - DEBUG - Importing XpmImagePlugin
+2024-10-06 20:36:57,416 - DEBUG - Importing XVThumbImagePlugin
+2024-10-06 20:36:57,418 - DEBUG - STREAM b'IHDR' 161894 13
+2024-10-06 20:36:57,419 - DEBUG - STREAM b'orNT' 161919 1
+2024-10-06 20:36:57,420 - DEBUG - b'orNT' 161919 1 (unknown)
+2024-10-06 20:36:57,420 - DEBUG - STREAM b'IDAT' 161932 9726
+2024-10-06 20:58:11,698 - INFO - Program mulai berjalan...
+2024-10-06 20:58:11,702 - DEBUG - Starting new HTTP connection (1): www.google.com:80
+2024-10-06 20:58:11,880 - DEBUG - http://www.google.com:80 "GET / HTTP/11" 200 9474
+2024-10-06 20:58:59,386 - INFO - Program mulai berjalan...
+2024-10-06 20:58:59,389 - DEBUG - Starting new HTTP connection (1): www.google.com:80
+2024-10-06 20:58:59,626 - DEBUG - http://www.google.com:80 "GET / HTTP/11" 200 9494
+2024-10-06 21:01:19,873 - INFO - Program mulai berjalan...
+2024-10-06 21:01:19,876 - DEBUG - Starting new HTTP connection (1): www.google.com:80
+2024-10-06 21:01:20,056 - DEBUG - http://www.google.com:80 "GET / HTTP/11" 200 9472
+2024-10-06 21:02:52,703 - INFO - Program mulai berjalan...
+2024-10-06 21:02:52,706 - DEBUG - Starting new HTTP connection (1): www.google.com:80
+2024-10-06 21:02:52,881 - DEBUG - http://www.google.com:80 "GET / HTTP/11" 200 9463
+2024-10-06 21:02:53,415 - DEBUG - Importing BlpImagePlugin
+2024-10-06 21:02:53,419 - DEBUG - Importing BmpImagePlugin
+2024-10-06 21:02:53,419 - DEBUG - Importing BufrStubImagePlugin
+2024-10-06 21:02:53,421 - DEBUG - Importing CurImagePlugin
+2024-10-06 21:02:53,424 - DEBUG - Importing DcxImagePlugin
+2024-10-06 21:02:53,427 - DEBUG - Importing DdsImagePlugin
+2024-10-06 21:02:53,435 - DEBUG - Importing EpsImagePlugin
+2024-10-06 21:02:53,438 - DEBUG - Importing FitsImagePlugin
+2024-10-06 21:02:53,443 - DEBUG - Importing FliImagePlugin
+2024-10-06 21:02:53,447 - DEBUG - Importing FpxImagePlugin
+2024-10-06 21:02:53,451 - DEBUG - Image: failed to import FpxImagePlugin: No module named 'olefile'
+2024-10-06 21:02:53,452 - DEBUG - Importing FtexImagePlugin
+2024-10-06 21:02:53,455 - DEBUG - Importing GbrImagePlugin
+2024-10-06 21:02:53,459 - DEBUG - Importing GifImagePlugin
+2024-10-06 21:02:53,459 - DEBUG - Importing GribStubImagePlugin
+2024-10-06 21:02:53,461 - DEBUG - Importing Hdf5StubImagePlugin
+2024-10-06 21:02:53,464 - DEBUG - Importing IcnsImagePlugin
+2024-10-06 21:02:53,470 - DEBUG - Importing IcoImagePlugin
+2024-10-06 21:02:53,472 - DEBUG - Importing ImImagePlugin
+2024-10-06 21:02:53,475 - DEBUG - Importing ImtImagePlugin
+2024-10-06 21:02:53,477 - DEBUG - Importing IptcImagePlugin
+2024-10-06 21:02:53,479 - DEBUG - Importing JpegImagePlugin
+2024-10-06 21:02:53,479 - DEBUG - Importing Jpeg2KImagePlugin
+2024-10-06 21:02:53,480 - DEBUG - Importing McIdasImagePlugin
+2024-10-06 21:02:53,482 - DEBUG - Importing MicImagePlugin
+2024-10-06 21:02:53,485 - DEBUG - Image: failed to import MicImagePlugin: No module named 'olefile'
+2024-10-06 21:02:53,487 - DEBUG - Importing MpegImagePlugin
+2024-10-06 21:02:53,489 - DEBUG - Importing MpoImagePlugin
+2024-10-06 21:02:53,507 - DEBUG - Importing MspImagePlugin
+2024-10-06 21:02:53,509 - DEBUG - Importing PalmImagePlugin
+2024-10-06 21:02:53,514 - DEBUG - Importing PcdImagePlugin
+2024-10-06 21:02:53,517 - DEBUG - Importing PcxImagePlugin
+2024-10-06 21:02:53,517 - DEBUG - Importing PdfImagePlugin
+2024-10-06 21:02:53,527 - DEBUG - Importing PixarImagePlugin
+2024-10-06 21:02:53,529 - DEBUG - Importing PngImagePlugin
+2024-10-06 21:02:53,530 - DEBUG - Importing PpmImagePlugin
+2024-10-06 21:02:53,530 - DEBUG - Importing PsdImagePlugin
+2024-10-06 21:02:53,533 - DEBUG - Importing QoiImagePlugin
+2024-10-06 21:02:53,536 - DEBUG - Importing SgiImagePlugin
+2024-10-06 21:02:53,539 - DEBUG - Importing SpiderImagePlugin
+2024-10-06 21:02:53,541 - DEBUG - Importing SunImagePlugin
+2024-10-06 21:02:53,543 - DEBUG - Importing TgaImagePlugin
+2024-10-06 21:02:53,544 - DEBUG - Importing TiffImagePlugin
+2024-10-06 21:02:53,545 - DEBUG - Importing WebPImagePlugin
+2024-10-06 21:02:53,551 - DEBUG - Importing WmfImagePlugin
+2024-10-06 21:02:53,554 - DEBUG - Importing XbmImagePlugin
+2024-10-06 21:02:53,557 - DEBUG - Importing XpmImagePlugin
+2024-10-06 21:02:53,559 - DEBUG - Importing XVThumbImagePlugin
+2024-10-06 21:02:53,561 - DEBUG - STREAM b'IHDR' 161894 13
+2024-10-06 21:02:53,562 - DEBUG - STREAM b'orNT' 161919 1
+2024-10-06 21:02:53,562 - DEBUG - b'orNT' 161919 1 (unknown)
+2024-10-06 21:02:53,563 - DEBUG - STREAM b'IDAT' 161932 9726
