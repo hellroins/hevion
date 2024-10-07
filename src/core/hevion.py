@@ -4,7 +4,8 @@ import requests
 import keyboard
 from src.core.hevion_text_to_speech import speak_online, speak_offline
 from src.core.hevion_speech_recognition import listen
-from src.extras.tray_icon import run_tray
+import tkinter as tk
+from src.extras.tray_icon import start_tray_icon
 
 class HevionAssistant:
     def __init__(self):
@@ -105,5 +106,14 @@ class HevionAssistant:
         listener_thread.daemon = True
         listener_thread.start()
 
-        # Run tray icon
-        run_tray()
+        # Buat instance tkinter di main thread
+        root = tk.Tk()
+
+        # Sembunyikan GUI saat startup
+        root.withdraw()
+
+        # Jalankan tray icon di thread terpisah, passing root tkinter
+        start_tray_icon(root)
+
+        # Jalankan mainloop tkinter di main thread
+        root.mainloop()
