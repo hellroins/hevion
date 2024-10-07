@@ -1,10 +1,19 @@
 import sys
 import threading
 import requests
-import keyboard
+import tkinter as tk
+import platform
+
+# Cek platform untuk hotkey
+if platform.system() == "Windows":
+    import keyboard
+elif platform.system() == "Darwin":  # macOS
+    from pynput import keyboard as pynput_keyboard
+else:
+    raise EnvironmentError("Unsupported OS")
+
 from src.core.hevion_text_to_speech import speak_online, speak_offline
 from src.core.hevion_speech_recognition import listen
-import tkinter as tk
 from src.extras.tray_icon import start_tray_icon
 
 class HevionAssistant:
@@ -76,28 +85,47 @@ class HevionAssistant:
             response = "Sorry, I can't help with that."
             self.speak_function(response)
 
-    def on_press(self, event):
-        """Detect when Ctrl+1 is pressed."""
+    # Untuk Windows
+    def on_press_windows(self, event):
+        """Detect when Ctrl+1 is pressed on Windows."""
         if event.name == '1' and keyboard.is_pressed('ctrl'):
             # Start listening when Ctrl + 1 is pressed
             if not self.listening:  # Prevent starting multiple listeners
                 self.listener_thread = threading.Thread(target=self.start_listening)
                 self.listener_thread.start()
 
-    def on_release(self, event):
-        """Detect when Ctrl+1 is released."""
+    def on_release_windows(self, event):
+        """Detect when Ctrl+1 is released on Windows."""
         if event.name == '1' and not keyboard.is_pressed('ctrl'):
             # Stop listening when Ctrl + 1 is released
             self.stop_listening()
 
-    def start_keyboard_listener(self):
-        """Start the keyboard listener."""
-        # Hook for detecting key press and release events
-        keyboard.on_press(self.on_press)
-        keyboard.on_release(self.on_release)
+    # Untuk macOS
+    def on_press_mac(self, key):
+        """Detect when Ctrl+1 is pressed on macOS."""
+        try:
+            if key == pynput_keyboard.KeyCode.from_char('1') and keyboard.is_pressed('ctrl'):
+                if not self.listening:  # Prevent starting multiple listeners
+                    self.listener_thread = threading.Thread(target=self.start_listening)
+                    self.listener_thread.start()
+        except Exception as e:
+            print(f"Error: {e}")
 
-        # Keep the program running to listen for hotkeys
-        keyboard.wait('esc')  # You can change this to any key to exit the program
+    def on_release_mac(self, key):
+        """Detect when Ctrl+1 is released on macOS."""
+        if key == pynput_keyboard.KeyCode.from_char('1'):
+            self.stop_listening()
+
+    def start_keyboard_listener(self):
+        """Start the keyboard listener based on OS."""
+        if platform.system() == "Windows":
+            # Hook for detecting key press and release events
+            keyboard.on_press(self.on_press_windows)
+            keyboard.on_release(self.on_release_windows)
+            keyboard.wait('esc')  # You can change this to any key to exit the program
+        elif platform.system() == "Darwin":  # macOS
+            with pynput_keyboard.Listener(on_press=self.on_press_mac, on_release=self.on_release_mac) as listener:
+                listener.join()
 
     def run(self):
         """Run the Hevion Assistant."""
@@ -117,3 +145,7 @@ class HevionAssistant:
 
         # Jalankan mainloop tkinter di main thread
         root.mainloop()
+
+if __name__ == "__main__":
+    assistant = HevionAssistant()
+    assistant.run()

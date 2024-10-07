@@ -5,6 +5,7 @@ import os
 import tkinter as tk
 from tkinter.scrolledtext import ScrolledText
 import threading
+import platform
 
 class TrayIconApp:
     def __init__(self, root):
@@ -16,6 +17,9 @@ class TrayIconApp:
     def create_image(self):
         """Membuat gambar ikon untuk tray."""
         icon_path = os.path.join(os.path.dirname(__file__), '..', '..', 'assets', 'images', 'hevion.ico')
+        if platform.system() == "Darwin":  # macOS
+            # Pastikan ikon berformat PNG, macOS lebih baik dengan format PNG
+            icon_path = os.path.join(os.path.dirname(__file__), '..', '..', 'assets', 'images', 'hevion.png')  
         return Image.open(icon_path)
 
     def create_gui(self):
