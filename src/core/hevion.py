@@ -18,6 +18,8 @@ from src.extras.tray_icon import start_tray_icon
 
 class HevionAssistant:
     def __init__(self):
+        self.root = tk.Tk()
+        self.root.withdraw()
         self.internet_available = self.check_internet()
         if self.internet_available:
             print("Connected to the internet. Using Google TTS...")
@@ -53,15 +55,15 @@ class HevionAssistant:
             return False
 
     def start_listening(self):
-        """Start listening for voice commands."""
-        if not self.listening:  # Ensure only one listening process is started
+        if not self.listening:
             self.listening = True
             print("Push-to-Talk Activated: Listening...")
-            command = listen()  # Call the function to listen for voice input
-            if command:
-                print(f"You said: {command}")
-                self.handle_command(command)
-            self.listening = False
+            
+            # Menggunakan self.root.after untuk menjaga interaksi GUI
+            def listen_and_handle():
+                listen(self.root, self.handle_command)  # Pass handle_command sebagai callback
+
+            threading.Thread(target=listen_and_handle).start()
 
     def stop_listening(self):
         """Stop listening for voice commands."""
@@ -71,6 +73,7 @@ class HevionAssistant:
 
     def handle_command(self, command):
         """Handle the voice command and generate response."""
+        self.listening = False
         if "hello" in command.lower():
             response = "Hello! How can I assist you today?"
             self.speak_function(response)
@@ -134,17 +137,12 @@ class HevionAssistant:
         listener_thread.daemon = True
         listener_thread.start()
 
-        # Buat instance tkinter di main thread
-        root = tk.Tk()
-
-        # Sembunyikan GUI saat startup
-        root.withdraw()
-
         # Jalankan tray icon di thread terpisah, passing root tkinter
-        start_tray_icon(root)
+        start_tray_icon(self.root)
 
         # Jalankan mainloop tkinter di main thread
-        root.mainloop()
+        # self.root.deiconify()
+        self.root.mainloop()
 
 if __name__ == "__main__":
     assistant = HevionAssistant()
