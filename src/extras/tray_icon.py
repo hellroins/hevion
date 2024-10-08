@@ -80,8 +80,3 @@ def start_tray_icon(root):
     tray_thread = threading.Thread(target=tray_app.run_tray)
     tray_thread.daemon = True
     tray_thread.start()
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    start_tray_icon(root)
-    root.mainloop()  # Memulai loop Tkinter
